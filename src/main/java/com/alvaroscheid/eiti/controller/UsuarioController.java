@@ -25,32 +25,32 @@ public class UsuarioController {
 	@Autowired
 	public UsuarioService service;
 
-	@GetMapping("")
+	@GetMapping("/")
 	public ModelAndView findAll() {
-		ModelAndView mv = new ModelAndView("/usuario");
+		ModelAndView mv = new ModelAndView("usuario");
 		mv.addObject("usuarios", service.findAll());
 		return mv;
 	}
 
-	@GetMapping("add")
+	@GetMapping("/add")
 	public ModelAndView add(Usuario usuario) {
-		ModelAndView mv = new ModelAndView("/usuarioAdd");
+		ModelAndView mv = new ModelAndView("usuarioAdd");
 		mv.addObject("usuario", usuario);
 		return mv;
 	}
 
-	@GetMapping("edit/{id}")
+	@GetMapping("/edit/{id}")
 	public ModelAndView edit(@PathVariable("id") Long id) {
 		return add(service.findOne(id));
 	}
 
-	@GetMapping("delete/{id}")
+	@GetMapping("/delete/{id}")
 	public ModelAndView delete(@PathVariable("id") Long id) {
 		service.delete(id);
 		return findAll();
 	}
 
-	@PostMapping("save")
+	@PostMapping("/save")
 	public ModelAndView save(@Valid Usuario usuario, BindingResult result) {
 		if (result.hasErrors()) {
 			return add(usuario);
