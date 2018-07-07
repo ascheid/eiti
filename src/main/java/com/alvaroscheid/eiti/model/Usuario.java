@@ -46,7 +46,7 @@ public class Usuario implements Serializable {
 
 	@Column
 	@Temporal(TemporalType.DATE)
-	@DateTimeFormat(pattern = "dd/MM/yyyy")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Getter
 	@Setter
 	private Date registerDate;
