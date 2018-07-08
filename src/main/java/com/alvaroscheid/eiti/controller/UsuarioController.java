@@ -62,21 +62,21 @@ public class UsuarioController {
 
 	@PostMapping("/searchByName")
 	public ModelAndView searchByName(Usuario usuario) {
-		ModelAndView mv = new ModelAndView("/usuario");
+		ModelAndView mv = new ModelAndView("usuario");
 		mv.addObject("usuarios", service.searchByName(usuario.getName()));
 		return mv;
 	}
 
 	@PostMapping("/searchByUsername")
 	public ModelAndView searchByusername(Usuario usuario) {
-		ModelAndView mv = new ModelAndView("/usuario");
+		ModelAndView mv = new ModelAndView("usuario");
 		mv.addObject("usuarios", service.searchByUsername(usuario.getUsername()));
 		return mv;
 	}
 
 	@PostMapping("/searchByEmail")
 	public ModelAndView searchByEmail(Usuario usuario) {
-		ModelAndView mv = new ModelAndView("/usuario");
+		ModelAndView mv = new ModelAndView("usuario");
 		mv.addObject("usuarios", service.searchByEmail(usuario.getEmail()));
 		return mv;
 	}
