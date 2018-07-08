@@ -29,6 +29,7 @@ public class UsuarioController {
 	public ModelAndView findAll() {
 		ModelAndView mv = new ModelAndView("usuario");
 		mv.addObject("usuarios", service.findAll());
+		mv.addObject("usuario", new Usuario());
 		return mv;
 	}
 
@@ -57,5 +58,26 @@ public class UsuarioController {
 		}
 		service.save(usuario);
 		return findAll();
+	}
+
+	@PostMapping("/searchByName")
+	public ModelAndView searchByName(Usuario usuario) {
+		ModelAndView mv = new ModelAndView("/usuario");
+		mv.addObject("usuarios", service.searchByName(usuario.getName()));
+		return mv;
+	}
+
+	@PostMapping("/searchByUsername")
+	public ModelAndView searchByusername(Usuario usuario) {
+		ModelAndView mv = new ModelAndView("/usuario");
+		mv.addObject("usuarios", service.searchByUsername(usuario.getUsername()));
+		return mv;
+	}
+
+	@PostMapping("/searchByEmail")
+	public ModelAndView searchByEmail(Usuario usuario) {
+		ModelAndView mv = new ModelAndView("/usuario");
+		mv.addObject("usuarios", service.searchByEmail(usuario.getEmail()));
+		return mv;
 	}
 }
